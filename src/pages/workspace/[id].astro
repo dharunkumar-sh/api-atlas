@@ -1,0 +1,39 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import { WorkspaceExplorer } from '@/components/workspace/WorkspaceExplorer';
+import { projectService } from '@/services/projectService';
+import { EmptyState } from '@/components/ui/EmptyState';
+import { Button } from '@/components/ui/Button';
+import { FolderX } from 'lucide-react';
+
+const { id } = Astro.params;
+const allProjects = await projectService.listProjects();
+const project = id ? await projectService.getProjectById(id) : null;
+---
+
+<AppShell
+  title={project ? `${project.name} - Workspace Explorer` : 'Workspace Explorer - API Atlas'}
+>
+  {project ? (
+    <WorkspaceExplorer
+      initialProject={project}
+      availableProjects={allProjects}
+      client:load
+    />
+  ) : (
+    <div class="p-8 sm:p-12 max-w-4xl mx-auto my-auto font-sans">
+      <EmptyState
+        icon={<FolderX className="w-10 h-10 text-rose-400" />}
+        title="Project Not Found"
+        description={`The project with ID "${id}" was not found or was removed from this workspace.`}
+        action={
+          <a href="/dashboard">
+            <Button variant="primary" size="sm" className="text-xs cursor-pointer">
+              Back to Dashboard
+            </Button>
+          </a>
+        }
+      />
+    </div>
+  )}
+</AppShell>

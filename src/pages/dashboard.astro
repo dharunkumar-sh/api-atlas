@@ -1,0 +1,48 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import { ProjectList } from '@/components/dashboard/ProjectList';
+import { DashboardMetrics } from '@/components/dashboard/DashboardMetrics';
+import { projectService } from '@/services/projectService';
+
+const overview = await projectService.getDashboardOverview();
+const { metrics } = overview;
+---
+
+<AppShell title="Dashboard - API Atlas">
+  <div class="p-6 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full space-y-8 font-sans">
+    <!-- Page Header with aligned spacing and clean status pill -->
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-atlas-denim/60">
+      <div>
+        <h1 class="text-2xl sm:text-3xl font-bold tracking-tight text-[#F4F7FB]">
+          API Dashboard
+        </h1>
+      </div>
+
+      <div class="flex items-center gap-3 self-start sm:self-center shrink-0">
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-[#142034] border border-atlas-denim text-xs text-[#E2EAF4] shadow-xs">
+          <span class="relative flex h-2 w-2">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-atlas-cyan opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-2 w-2 bg-atlas-cyan"></span>
+          </span>
+          <span class="text-xs font-medium text-atlas-cyan">
+            Local Engine Active
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Quick Metrics Overview: Modernized Dashboard Metrics Island -->
+    <section aria-label="Dashboard Metrics">
+      <DashboardMetrics
+        metrics={metrics}
+        recentProjectsCount={overview.recentProjectsCount}
+        client:load
+      />
+    </section>
+
+    <!-- Interactive Projects List Island -->
+    <section aria-label="Contracts Registry">
+      <ProjectList client:load />
+    </section>
+  </div>
+</AppShell>

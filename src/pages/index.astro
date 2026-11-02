@@ -1,0 +1,122 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { LandingHeader } from '@/components/landing/LandingHeader';
+import { HeroWorkspacePreview } from '@/components/landing/HeroWorkspacePreview';
+import { DependencyGraph } from '@/components/landing/DependencyGraph';
+import { FeaturesSection } from '@/components/landing/FeaturesSection';
+import { WorkflowSection } from '@/components/landing/WorkflowSection';
+import { UseCasesSection } from '@/components/landing/UseCasesSection';
+import { Container } from '@/components/ui/Container';
+import { Button } from '@/components/ui/Button';
+import { Badge } from '@/components/ui/Badge';
+import { ToastContainer } from '@/components/ui/Toast';
+import { ArrowRight, Compass, Sparkles } from 'lucide-react';
+---
+
+<Layout
+  title="API Atlas — Understand Every Connection in Your API"
+  description="Turn your OpenAPI specification into a connected workspace. Explore endpoints, trace schemas, and test requests—without losing the big picture."
+>
+  <div class="min-h-screen flex flex-col bg-[#0A101D] text-[#F4F7FB] relative selection:bg-[#2A4494] selection:text-[#F4F7FB]">
+    <!-- Top Global Header with Accessible Mobile Menu -->
+    <LandingHeader client:load />
+
+    <!-- Main Content Flow -->
+    <main class="flex-1">
+      {/* =========================================================================
+          HERO SECTION: High-contrast typography & Interactive Workspace Preview
+          ========================================================================= */}
+      <section class="relative pt-16 sm:pt-20 pb-20 overflow-hidden">
+        <!-- Ambient Blue-Cyan restrained glow -->
+        <div
+          class="absolute top-0 left-1/2 -translate-x-1/2 w-[840px] h-[400px] bg-gradient-to-b from-[#2A4494]/25 via-[#4EA5D9]/10 to-transparent blur-3xl pointer-events-none -z-10"
+        >
+        </div>
+
+        <Container size="xl" className="space-y-10 text-center">
+          <!-- Hero Headline -->
+          <h1
+            class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#F4F7FB] max-w-5xl mx-auto leading-[1.08]"
+          >
+            Understand Every Connection <span
+              class="text-transparent bg-clip-text bg-linear-to-r from-[#F4F7FB] via-[#BAE6FD] to-[#4EA5D9]"
+              >in Your API</span
+            >
+          </h1>
+
+          <!-- Hero Tagline -->
+          <p
+            class="text-base sm:text-lg lg:text-xl text-[#9BB0CC] max-w-3xl mx-auto leading-relaxed"
+          >
+            Turn your OpenAPI specification into a connected workspace. Explore endpoints, trace schemas, and test requests—without losing the big picture.
+          </p>
+
+          <!-- Primary & Secondary CTA Row -->
+          <div class="pt-2 flex flex-wrap items-center justify-center gap-4">
+            <a href="/workspace">
+              <Button
+                variant="primary"
+                size="lg"
+                className="shadow-xl shadow-[#2A4494]/30 hover:shadow-[#2A4494]/50 transition-all font-semibold"
+              >
+                <Compass className="w-4 h-4 mr-2 text-[#BAE6FD]" />
+                <span>Explore API Atlas</span>
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </a>
+
+            <a href="#how-it-works">
+              <Button variant="secondary" size="lg" className="border-[#224870] hover:border-[#4EA5D9]">
+                <Sparkles className="w-4 h-4 mr-2 text-[#4EA5D9]" />
+                <span>See How It Works</span>
+              </Button>
+            </a>
+          </div>
+
+          <!-- HTTP Method Support Badges -->
+          <div class="pt-2 flex flex-wrap items-center justify-center gap-2 font-mono text-xs text-[#9BB0CC]">
+            <span class="font-sans mr-2 text-[#9BB0CC]">Supported HTTP Verbs:</span>
+            <Badge variant="get">GET</Badge>
+            <Badge variant="post">POST</Badge>
+            <Badge variant="put">PUT</Badge>
+            <Badge variant="patch">PATCH</Badge>
+            <Badge variant="delete">DELETE</Badge>
+          </div>
+
+          <!-- Interactive Workspace Product Preview -->
+          <div id="workspace-preview" class="pt-8 sm:pt-12 scroll-mt-20">
+            <HeroWorkspacePreview client:load />
+          </div>
+        </Container>
+      </section>
+
+      <!-- Visual API Dependency Graph Section -->
+      <DependencyGraph client:visible />
+
+      <!-- Core Capabilities Grid -->
+      <FeaturesSection client:visible />
+
+      <!-- Step-by-Step Workflow (How It Works) -->
+      <WorkflowSection client:visible />
+
+      <!-- Targeted Role Use Cases -->
+      <UseCasesSection client:visible />
+    </main>
+
+    <!-- Clean Application Footer -->
+    <footer class="border-t border-[#224870]/60 bg-[#070B13] py-8 text-center text-xs text-[#9BB0CC]">
+      <Container size="xl" className="flex flex-col sm:flex-row items-center justify-between gap-4">
+        <p>© 2026 API Atlas. Deterministic OpenAPI contract workspace.</p>
+        <div class="flex items-center gap-6 text-xs">
+          <a href="/overview" class="hover:text-[#44CFCB] transition-colors cursor-pointer">API Overview</a>
+          <a href="/dashboard" class="hover:text-[#44CFCB] transition-colors cursor-pointer">Dashboard</a>
+          <a href="/workspace" class="hover:text-[#44CFCB] transition-colors cursor-pointer">Workspace</a>
+          <a href="/docs" class="hover:text-[#44CFCB] transition-colors cursor-pointer">Documentation</a>
+        </div>
+      </Container>
+    </footer>
+
+    <!-- Global Toast notification island -->
+    <ToastContainer client:load />
+  </div>
+</Layout>

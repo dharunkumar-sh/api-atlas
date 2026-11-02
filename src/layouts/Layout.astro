@@ -1,0 +1,34 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'API Atlas',
+  description = 'Explore, validate, and test OpenAPI 3.0 & 3.1 contracts with zero latency. Privacy-first, developer-engineered API explorer.',
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en" class="dark scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0A101D" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title}</title>
+  </head>
+  <body class="bg-atlas-space text-[#F4F7FB] min-h-screen selection:bg-atlas-royal/40 selection:text-atlas-cyan antialiased font-sans">
+    <slot />
+  </body>
+</html>

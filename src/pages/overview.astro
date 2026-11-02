@@ -1,0 +1,14 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import { ApiOverviewView } from '@/components/overview/ApiOverviewView';
+import { projectService } from '@/services/projectService';
+
+const projects = await projectService.listProjects();
+---
+
+<AppShell title="API Overview - API Atlas">
+  <div class="p-6 sm:p-8 lg:p-10 max-w-7xl mx-auto w-full">
+    <ApiOverviewView projects={projects} client:load />
+  </div>
+</AppShell>
+

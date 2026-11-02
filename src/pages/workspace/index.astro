@@ -1,0 +1,22 @@
+---
+import AppShell from '@/layouts/AppShell.astro';
+import { WorkspaceExplorer } from '@/components/workspace/WorkspaceExplorer';
+import { projectService } from '@/services/projectService';
+
+const projects = await projectService.listProjects();
+const initialProject = projects.length > 0 ? projects[0] : null;
+---
+
+<AppShell
+  title={
+    initialProject
+      ? `${initialProject.name} - Workspace Explorer`
+      : 'Workspace Explorer - API Atlas'
+  }
+>
+  <WorkspaceExplorer
+    initialProject={initialProject}
+    availableProjects={projects}
+    client:load
+  />
+</AppShell>

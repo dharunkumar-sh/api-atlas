@@ -1,0 +1,119 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import { LandingHeader } from '@/components/landing/LandingHeader';
+import { Container } from '@/components/ui/Container';
+import { Badge } from '@/components/ui/Badge';
+import { Button } from '@/components/ui/Button';
+import { BookOpen, Terminal, Code2, ArrowRight, CheckCircle2, Layers } from 'lucide-react';
+---
+
+<Layout
+  title="Documentation — API Atlas"
+  description="Comprehensive documentation for importing, parsing, and testing OpenAPI specifications with API Atlas."
+>
+  <div class="min-h-screen flex flex-col bg-[#0A101D] text-[#F4F7FB]">
+    <LandingHeader client:load />
+
+    <main class="flex-1 py-12 lg:py-16">
+      <Container size="xl" className="space-y-12">
+        {/* Header */}
+        <div class="space-y-4 max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#224870] bg-[#142034] text-[#E2EAF4] text-xs font-mono font-medium">
+            <BookOpen className="w-3.5 h-3.5 text-[#44CFCB]" />
+            <span>DEVELOPER DOCUMENTATION</span>
+          </div>
+          <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-[#F4F7FB]">
+            Documentation & Integration Guide
+          </h1>
+          <p class="text-base sm:text-lg text-[#9BB0CC] leading-relaxed">
+            Learn how API Atlas parses OpenAPI 3.0 and 3.1 specifications into deterministic contract trees, executes mock requests locally, and builds visual dependency meshes.
+          </p>
+        </div>
+
+        {/* Quickstart Grid */}
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl bg-[#0E1726] border border-[#224870] space-y-3">
+            <div class="w-9 h-9 rounded-lg bg-[#142034] border border-[#224870] flex items-center justify-center text-[#44CFCB]">
+              <Layers className="w-5 h-5" />
+            </div>
+            <h2 class="text-base font-bold text-[#F4F7FB]">1. Ingest Contract</h2>
+            <p class="text-xs text-[#9BB0CC] leading-relaxed">
+              Load your OpenAPI contract via raw JSON/YAML file, direct URL fetching, or paste it directly in the in-browser validator.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#0E1726] border border-[#224870] space-y-3">
+            <div class="w-9 h-9 rounded-lg bg-[#142034] border border-[#224870] flex items-center justify-center text-[#4EA5D9]">
+              <Terminal className="w-5 h-5" />
+            </div>
+            <h2 class="text-base font-bold text-[#F4F7FB]">2. Inspect & Simulate</h2>
+            <p class="text-xs text-[#9BB0CC] leading-relaxed">
+              Browse schema definitions, inspect path parameters, and dispatch mock requests in the sandbox runner with sub-15ms response feedback.
+            </p>
+          </div>
+
+          <div class="p-6 rounded-2xl bg-[#0E1726] border border-[#224870] space-y-3">
+            <div class="w-9 h-9 rounded-lg bg-[#142034] border border-[#224870] flex items-center justify-center text-[#2A4494]">
+              <Code2 className="w-5 h-5 text-[#BAE6FD]" />
+            </div>
+            <h2 class="text-base font-bold text-[#F4F7FB]">3. Export & Share</h2>
+            <p class="text-xs text-[#9BB0CC] leading-relaxed">
+              Synthesize production-ready cURL commands, download verified contract schemas, or embed visual dependency graphs in team wikis.
+            </p>
+          </div>
+        </div>
+
+        {/* Deep Dive Specification Guides */}
+        <div class="p-8 rounded-2xl bg-[#0E1726] border border-[#224870] space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-4 border-b border-[#224870]/60 pb-4">
+            <div>
+              <h2 class="text-xl font-bold text-[#F4F7FB]">Supported Contract Specifications</h2>
+              <p class="text-xs text-[#9BB0CC] mt-1">
+                Zero external dependencies. The client-side parser complies strictly with the official specifications.
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <Badge variant="success">OpenAPI 3.1.x</Badge>
+              <Badge variant="post">OpenAPI 3.0.x</Badge>
+              <Badge variant="outline">Swagger 2.0</Badge>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-xs font-mono text-[#E2EAF4]">
+            <div class="p-4 rounded-xl bg-[#080D18] border border-[#224870] space-y-2">
+              <div class="flex items-center justify-between text-[#9BB0CC] text-[11px]">
+                <span>CLI Quickstart</span>
+                <span class="text-[#44CFCB]">Bash</span>
+              </div>
+              <pre class="text-[#BAE6FD] overflow-x-auto leading-relaxed">
+# Clone and run API Atlas locally
+git clone https://github.com/api-atlas/api-atlas.git
+cd api-atlas
+npm install
+npm run dev</pre>
+            </div>
+
+            <div class="flex items-center gap-2 text-[#9BB0CC] text-xs font-sans">
+              <CheckCircle2 className="w-4 h-4 text-[#44CFCB]" />
+              <span>Full local privacy: API contracts and telemetry never leave your machine.</span>
+            </div>
+          </div>
+
+          <div class="pt-4 flex items-center gap-4">
+            <a href="/workspace">
+              <Button variant="primary" size="md">
+                <span>Launch Interactive Workspace</span>
+                <ArrowRight className="w-4 h-4 ml-1.5" />
+              </Button>
+            </a>
+            <a href="/">
+              <Button variant="secondary" size="md">
+                <span>Back to Overview</span>
+              </Button>
+            </a>
+          </div>
+        </div>
+      </Container>
+    </main>
+  </div>
+</Layout>
