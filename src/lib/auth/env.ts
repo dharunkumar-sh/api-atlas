@@ -51,9 +51,13 @@ export type AuthEnv = z.infer<typeof authEnvSchema>;
  * Falls back safely in development if secrets have not yet been provisioned.
  */
 export function getAuthEnv(): AuthEnv {
+  // Determine default base URL (support Vercel system environment variable VERCEL_URL)
+  const vercelUrl = getEnvVar('VERCEL_URL');
+  const defaultBaseUrl = getEnvVar('BETTER_AUTH_URL') || (vercelUrl ? `https://${vercelUrl}` : 'http://localhost:4321');
+
   const raw = {
     BETTER_AUTH_SECRET: getEnvVar('BETTER_AUTH_SECRET'),
-    BETTER_AUTH_URL: getEnvVar('BETTER_AUTH_URL') || 'http://localhost:4321',
+    BETTER_AUTH_URL: defaultBaseUrl,
     DATABASE_URL: getEnvVar('DATABASE_URL'),
     GITHUB_CLIENT_ID: getEnvVar('GITHUB_CLIENT_ID'),
     GITHUB_CLIENT_SECRET: getEnvVar('GITHUB_CLIENT_SECRET'),

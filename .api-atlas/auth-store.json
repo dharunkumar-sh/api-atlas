@@ -419,6 +419,18 @@
       "authMethod": "email",
       "createdAt": "2026-11-02T03:35:38.957Z",
       "updatedAt": "2026-11-02T03:35:39.092Z"
+    },
+    {
+      "id": "usr_mvyqf6p8_iinnu2",
+      "name": "Ada Lovelace",
+      "email": "server_dev_1793592090862@api-atlas.dev",
+      "emailVerified": false,
+      "image": null,
+      "passwordHash": "scrypt$v1$216153cab78556aea6076a1261d47f57$98020982ba7dbb740c7158acccdcd4ee607d4a96793618ed761b791024a1b496c754b44e177156867bc32e2e4f249622080ebd20766b6f5bd418a59f82a018e7",
+      "role": "user",
+      "authMethod": "email",
+      "createdAt": "2026-11-02T04:01:31.052Z",
+      "updatedAt": "2026-11-02T04:01:31.164Z"
     }
   ],
   "sessions": [
@@ -871,6 +883,26 @@
       "userAgent": null,
       "createdAt": "2026-11-02T03:35:39.013Z",
       "updatedAt": "2026-11-02T03:35:39.013Z"
+    },
+    {
+      "id": "15e2e6adcda43b8c7826dc70d41f592b2d9cbcc1ebc234ac83812973be96ebee",
+      "userId": "usr_mvyqf6p8_iinnu2",
+      "token": "15e2e6adcda43b8c7826dc70d41f592b2d9cbcc1ebc234ac83812973be96ebee",
+      "expiresAt": "2026-11-09T04:01:31.055Z",
+      "ipAddress": null,
+      "userAgent": null,
+      "createdAt": "2026-11-02T04:01:31.055Z",
+      "updatedAt": "2026-11-02T04:01:31.055Z"
+    },
+    {
+      "id": "b91193ba99edc1d429b6f4f3f6d9d15783049fa95c0064ad05fd7738668b02e9",
+      "userId": "usr_mvyqf6p8_iinnu2",
+      "token": "b91193ba99edc1d429b6f4f3f6d9d15783049fa95c0064ad05fd7738668b02e9",
+      "expiresAt": "2026-11-09T04:01:31.094Z",
+      "ipAddress": null,
+      "userAgent": null,
+      "createdAt": "2026-11-02T04:01:31.094Z",
+      "updatedAt": "2026-11-02T04:01:31.094Z"
     }
   ],
   "projects": [
