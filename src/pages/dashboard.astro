@@ -4,6 +4,11 @@ import { ProjectList } from '@/components/dashboard/ProjectList';
 import { DashboardMetrics } from '@/components/dashboard/DashboardMetrics';
 import { projectService } from '@/services/projectService';
 
+// Double-check server-side authentication safeguard
+if (!Astro.locals.user) {
+  return Astro.redirect('/?auth=signin&redirect=%2Fdashboard', 302);
+}
+
 const overview = await projectService.getDashboardOverview();
 const { metrics } = overview;
 ---

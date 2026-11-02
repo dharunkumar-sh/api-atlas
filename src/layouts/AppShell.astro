@@ -14,16 +14,16 @@ const currentPath = Astro.url.pathname;
 ---
 
 <Layout title={title} description={description}>
-  <div class="min-h-screen flex flex-col bg-[#0A101D] text-[#F4F7FB] font-sans antialiased overflow-x-hidden w-full max-w-full">
+  <div class="h-screen flex flex-col bg-[#0A101D] text-[#F4F7FB] font-sans antialiased overflow-hidden w-full max-w-full">
     <!-- Fixed Navbar (anchored at top-0, z-50) -->
     <Navbar currentPath={currentPath} client:load />
 
-    <div class="flex-1 flex w-full min-w-0 overflow-x-hidden pt-14">
+    <div class="flex-1 flex w-full min-w-0 overflow-hidden pt-14">
       <!-- Fixed Sidebar (anchored at top-14 left-0 bottom-0, w-20, z-40) -->
       <Sidebar currentPath={currentPath} client:load />
 
       <!-- Main Page Content (offset by sidebar width md:pl-20) -->
-      <main class="flex-1 min-w-0 bg-[#080C16] flex flex-col overflow-x-hidden w-full md:pl-20">
+      <main class="flex-1 min-w-0 bg-[#080C16] flex flex-col overflow-y-auto overflow-x-hidden w-full md:pl-20 h-full">
         <slot />
       </main>
     </div>

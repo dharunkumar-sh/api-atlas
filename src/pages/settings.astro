@@ -1,6 +1,11 @@
 ---
 import AppShell from '@/layouts/AppShell.astro';
 import { SettingsForm } from '@/components/settings/SettingsForm';
+
+// Double-check server-side authentication safeguard
+if (!Astro.locals.user) {
+  return Astro.redirect('/?auth=signin&redirect=%2Fsettings', 302);
+}
 ---
 
 <AppShell title="Settings - API Atlas">

@@ -289,7 +289,7 @@ console.log(response.data);`;
   const methodsList = ['ALL', 'GET', 'POST', 'PUT', 'PATCH', 'DELETE'];
 
   return (
-    <div className="flex flex-col flex-1 h-[calc(100vh-3.5rem)] overflow-hidden font-sans bg-[#080C16] w-full min-w-0">
+    <div className="flex flex-col flex-1 h-full overflow-hidden font-sans bg-[#080C16] w-full min-w-0">
       {/* Workspace Subheader Bar */}
       <div className="h-14 border-b border-[#224870]/70 bg-[#0A101D] px-4 sm:px-6 flex items-center justify-between shrink-0 z-30 select-none w-full min-w-0">
         {/* Left: Project Selector & Specs */}
