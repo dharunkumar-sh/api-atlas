@@ -38,6 +38,12 @@ const baseURL = env.BETTER_AUTH_URL || 'http://localhost:4321';
 const authOptions: Parameters<typeof betterAuth>[0] = {
   secret: authSecret,
   baseURL,
+  trustedOrigins: [
+    'https://apiatlas-docs.vercel.app',
+    'https://*.vercel.app',
+    'http://localhost:4321',
+    'http://127.0.0.1:4321',
+  ],
   user: {
     additionalFields: {
       authMethod: {
