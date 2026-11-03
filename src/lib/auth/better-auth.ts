@@ -9,13 +9,16 @@ import {
 
 const env = getAuthEnv();
 
+const baseURL = env.BETTER_AUTH_URL || 'http://localhost:4321';
+
 // Configure social providers dynamically based on available environment credentials
-const socialProviders: Record<string, { clientId: string; clientSecret: string }> = {};
+const socialProviders: Record<string, { clientId: string; clientSecret: string; redirectURI?: string }> = {};
 
 if (isGitHubOAuthConfigured() && env.GITHUB_CLIENT_ID && env.GITHUB_CLIENT_SECRET) {
   socialProviders.github = {
     clientId: env.GITHUB_CLIENT_ID,
     clientSecret: env.GITHUB_CLIENT_SECRET,
+    redirectURI: `${baseURL.replace(/\/+$/, '')}/api/auth/callback/github`,
   };
 }
 
@@ -23,6 +26,7 @@ if (isGoogleOAuthConfigured() && env.GOOGLE_CLIENT_ID && env.GOOGLE_CLIENT_SECRE
   socialProviders.google = {
     clientId: env.GOOGLE_CLIENT_ID,
     clientSecret: env.GOOGLE_CLIENT_SECRET,
+    redirectURI: `${baseURL.replace(/\/+$/, '')}/api/auth/callback/google`,
   };
 }
 
@@ -31,8 +35,6 @@ const authSecret =
   env.BETTER_AUTH_SECRET ||
   process.env.AUTH_SECRET ||
   'api-atlas-default-development-secret-minimum-32-chars-long';
-
-const baseURL = env.BETTER_AUTH_URL || 'http://localhost:4321';
 
 // Build options
 const authOptions: Parameters<typeof betterAuth>[0] = {
